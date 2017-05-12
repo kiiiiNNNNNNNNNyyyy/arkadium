@@ -3,7 +3,7 @@
 <head>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+	<link rel="stylesheet" type="text/css" href="styles.css">
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="main.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -11,11 +11,11 @@
 <body>
 	<div class="container" style="padding-top:2%";>
 		<div class="row">
-			<div class="col-md-2"></div>
-			<div class="col-md-8">
-				<form class="navbar-form navbar-left" action="/" method="post">
-					<div class="col-md-5"><h4><strong>Celebrity of your choice!</strong></h4></div>
-					<div class="col-md-7">
+			<div class="col-md-10">
+				<form class="navbar-form navbar-center" action="/" method="post">
+					<div class="col-md-2"></div>
+					<div class="col-md-5"><h4><strong>Try a Celebrity of your choice!</strong></h4></div>
+					<div class="col-md-5">
 						<div class="form-group">
 				        	<input type="text" class="form-control" id="search" name="search" placeholder="Search">
 				        </div>
@@ -25,6 +25,7 @@
 			</div>
 			<div class="col-md-2"></div>
 		</div>
+	
 		<div class="row">
 			<div class="content">
 				<div class="panel panel-success">
@@ -61,7 +62,7 @@
 									<% console.log(obj.name); %>
 									<h4><strong>Q. In what year did <%= obj.name %> appear in <%= obj.content.results[rand].title %>?</strong></h4>
 									<ol class="list-group">
-										<li class="list-group-item text-center list-group-item-warning"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=answer + x[0]%>, <%=answer%>)" class="ans"><%= answer + x[0] %></button></li>
+										<li class="list-group-item text-center list-group-item-warning"><button class="btn btn-lg btn-md btn-info" onClick="ansCheck(<%=answer + x[0]%>, <%=answer%>)" class="ans"><%= answer + x[0] %></button></li>
 										<li class="list-group-item text-center list-group-item-warning"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=answer + x[1]%>, <%=answer%>)" class="ans"><%= answer + x[1] %></button></li>
 										<li class="list-group-item text-center list-group-item-warning"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=answer + x[2]%>, <%=answer%>)" class="ans"><%= answer + x[2] %></button></li>
 									</ol>
@@ -72,7 +73,7 @@
 										<strong class="outcome"></strong>
 										<strong class="corAns"></strong>
 									</div>
-									<button class="btn btn-lg btn-primary" onClick="reload()" class="plyAgain">Play Again?</button>
+									<button class="btn btn-lg btn-primary btn-md" onClick="reload()" class="plyAgain">Play Again?</button>
 								</div>
 							</div>
 						<% } else if(z==2){%>
@@ -137,6 +138,9 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="alert alert-danger">
+  			<strong>Please Note!</strong> Enter a valid actor name else default Brad Pitt Quiz will be rendered.
 		</div>
 	</div>
 </div>

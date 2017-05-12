@@ -8,7 +8,6 @@ var ejsMate = require('ejs-mate');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var flash = require('express-flash');
-var sessionStore = new session.MemoryStore;
 
 var app = express();
 var api_key = "b63f3b60776f510d0be5712e50e1cd35";
@@ -18,7 +17,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser('secret'));
 app.use(session({
     cookie: { maxAge: 60000 },
-    store: sessionStore,
     saveUninitialized: true,
     resave: 'true',
     secret: 'secret'
