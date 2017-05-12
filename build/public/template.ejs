@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="main.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="container" style="padding-top:2%";>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<form class="navbar-form navbar-left" action="/" method="post">
+					<div class="col-md-5"><h4><strong>Celebrity of your choice!</strong></h4></div>
+					<div class="col-md-7">
+						<div class="form-group">
+				        	<input type="text" class="form-control" id="search" name="search" placeholder="Search">
+				        </div>
+				        <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+					</div>
+			    </form>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+		<div class="row">
+			<div class="content">
+				<div class="panel panel-success">
+					<div class="panel-heading text-center"><h4>How well do you know <%= obj.name %>?</h4></div>
+					<div class="panel-body">
+						<% var rand = Math.floor(Math.random() * (19 - 0 + 1)) + 0; %>
+						<% var random1 = 0; var random2 = 0; %>
+						<% do{random1 = Math.floor(Math.random() * (19 - 0 + 1)) + 0;}while(random1 === rand);%>
+						<% do{random2 = Math.floor(Math.random() * (19 - 0 + 1)) + 0;}while((random2 === rand) && (random2 === random1)) ; %>
+						<% var randTwo = Math.floor	(Math.random() * (2 - 0 + 1)) + 0; %>
+						<% var answer = parseInt(obj.content.results[rand].release_date.split("-")[0]) %>
+						<% function shff(arr) {
+							let i = arr.length;
+							while (i > 0) {
+								let ind = Math.floor(Math.random() * i);
+								i--;
+								let z = arr[i];
+								arr[i] = arr[ind];
+								arr[ind] = z;
+							}
+							return arr;
+						} %>
+						<% var z = Math.floor(Math.random() * 3) + 1;%>	
+						<% if(z == 1){ %>
+							<% var x = [0, 1, 2]%>
+							<% shff(x) %>
+							<div class="col-md-6">
+								<div class="internal">
+									<img class="img-responsive img-rounded" alt="Cinque Terre" src="https://image.tmdb.org/t/p/w500<%= obj.content.results[rand].poster_path %>">	
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="internal">
+									<% console.log(obj.name); %>
+									<h4><strong>Q. In what year did <%= obj.name %> appear in <%= obj.content.results[rand].title %>?</strong></h4>
+									<ol class="list-group">
+										<li class="list-group-item text-center list-group-item-warning"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=answer + x[0]%>, <%=answer%>)" class="ans"><%= answer + x[0] %></button></li>
+										<li class="list-group-item text-center list-group-item-warning"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=answer + x[1]%>, <%=answer%>)" class="ans"><%= answer + x[1] %></button></li>
+										<li class="list-group-item text-center list-group-item-warning"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=answer + x[2]%>, <%=answer%>)" class="ans"><%= answer + x[2] %></button></li>
+									</ol>
+									<div class="alert alert-success success_hide">
+										<strong class="outcome"></strong>
+									</div>
+									<div class="alert alert-danger failure_hide">
+										<strong class="outcome"></strong>
+										<strong class="corAns"></strong>
+									</div>
+									<button class="btn btn-lg btn-primary" onClick="reload()" class="plyAgain">Play Again?</button>
+								</div>
+							</div>
+						<% } else if(z==2){%>
+							<% var answer_moveie_name = JSON.stringify(obj.content.results[rand].original_title); %>
+							<% var wrong_movie_name1 = JSON.stringify(obj.content.results[random1].original_title);%>
+							<% var wrong_movie_name2 = JSON.stringify(obj.content.results[random2].original_title);%>
+							<% var x = [answer_moveie_name, wrong_movie_name2, wrong_movie_name1]; shff(x); %>
+							<div class="col-md-6">
+								<div class="internal">
+									<img class="img-responsive img-rounded" alt="Cinque Terre" src="https://image.tmdb.org/t/p/w500<%=obj.content.results[rand].backdrop_path %>">	
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="internal">
+									<h4><strong>Q. What is the title of this movie?</strong></h4>
+									<ol class="list-group">
+										<li class="list-group-item text-center list-group-item-warning"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=x[0] %>, <%=answer_moveie_name %>)"><%= x[0] %></button></li>
+										<li class="list-group-item text-center list-group-item-warning"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=x[1]%>, <%=answer_moveie_name %>)"><%= x[1] %></button></li>
+										<li class="list-group-item text-center list-group-item-warning"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=x[2]%>, <%=answer_moveie_name%>)"><%= x[2] %></button></li>
+									</ol>
+									<div class="alert alert-success success_hide">
+										<strong class="outcome"></strong>
+									</div>
+									<div class="alert alert-danger failure_hide">
+										<strong class="outcome"></strong>
+										<strong class="corAns"></strong>
+									</div>
+									<button class="btn btn-lg btn-primary" onClick="reload()" class="plyAgain">Play Again?</button>
+								</div>
+							</div>
+						<% }else{ %>
+							<% var desc = JSON.stringify(obj.content.results[rand].overview);%>
+							<% console.log(desc); %>
+							<% var desc_movie = JSON.stringify(obj.content.results[rand].original_title); %>
+							<% var wrong_movie_name1 = JSON.stringify(obj.content.results[random1].original_title);%>
+							<% var wrong_movie_name2 = JSON.stringify(obj.content.results[random2].original_title);%>
+							<% var x = [desc_movie, wrong_movie_name1, wrong_movie_name2]; shff(x); %>
+							<div class="col-md-6">
+								<div style="padding-top:15%;text-align:justify;">
+									<strong><%= desc %></strong>	
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="internal">
+									<h4><strong>Q. Which movie is best described by this title?</strong></h4>
+									<ol class="list-group">
+										<li class="list-group-item text-center list-group-item-warning"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=x[0] %>, <%=desc_movie %>)"><%= x[0] %></button></li>
+										<li class="list-group-item text-center list-group-item-warning"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=x[1]%>, <%=desc_movie %>)"><%= x[1] %></button></li>
+										<li class="list-group-item text-center list-group-item-warning"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=x[2]%>, <%=desc_movie %>)"><%= x[2] %></button></li>
+									</ol>
+									<div class="alert alert-success success_hide">
+										<strong class="outcome"></strong>
+									</div>
+									<div class="alert alert-danger failure_hide">
+										<strong class="outcome"></strong>
+										<strong class="corAns"></strong>
+									</div>
+									<button class="btn btn-lg btn-primary" onClick="reload()" class="plyAgain">Play Again?</button>
+								</div>
+							</div>
+						<% } %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+
+</html>
