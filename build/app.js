@@ -44,7 +44,9 @@ app.get("/actor", function(req, res){
 		var json = JSON.parse(data);
 		var id = json.results[0].id;
 		return id;
-	})	.then((id) => {
+	}).catch((err) => {
+		console.log(err);
+	}).then((id) => {
 		var movie_url = `http://api.themoviedb.org/3/discover/movie?api_key=${api_key}&with_cast=${id}`;
 		var x = data.get_details(movie_url).then((data) => {
 			var json = JSON.parse(data);
@@ -58,13 +60,14 @@ app.get("/actor", function(req, res){
 			var rendered = ejs.render(template, {obj:obj});
 			res.send(rendered);
 		}).catch(() => {
-			req.flash('success', 'This is a flash message using the express-flash module.')
-			res.status(404).redirect('/');
+			req.flash("error", "Email delivery failed");
+			res.redirect('/');
 		});
 	});
 
 	//console.log(main);
 });
+
 
 app.post('/', (req, res) => {
 	var x = req.body.search;

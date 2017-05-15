@@ -4,28 +4,74 @@
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="main.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
-	<div class="container" style="padding-top:2%";>
-		<div class="row">
-			<div class="col-md-10">
-				<form class="navbar-form navbar-center" action="/" method="post">
-					<div class="col-md-2"></div>
-					<div class="col-md-5"><h4><strong>Try a Celebrity of your choice!</strong></h4></div>
-					<div class="col-md-5">
-						<div class="form-group">
-				        	<input type="text" class="form-control" id="search" name="search" placeholder="Search">
-				        </div>
-				        <button type="submit" class="btn btn-primary" value="submit">Submit</button>
-					</div>
-			    </form>
-			</div>
-			<div class="col-md-2"></div>
+	<nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Arkadium Project</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Quiz Game</a></li>
+            <li><a target="_blank" href="http://www.arkadium.com/us/">Arkadium Home</a></li>
+            <li><a target="_blank" href="http://www.arkadium.com/us/games/">Arkadium Games</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About Arkadium <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a target="_blank" href="http://www.arkadium.com/us/about/">About Arkadium</a></li>
+                <li><a target="_blank" href="http://www.arkadium.com/us/about/team/">About Team</a></li>
+                <li><a target="_blank" href="http://www.arkadium.com/us/our-products/">About Products</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Follow Arkadium</li>
+                <li><a target="_blank" href="https://www.facebook.com/arkadium"><i class="fa fa-facebook"></i>&nbsp;Facebook</a></li>
+                <li><a target="_blank" href="https://twitter.com/arkadium"><i class="fa fa-twitter"></i>&nbsp;Twitter</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About Me<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a target="_blank" href="https://kiiiinnnnnnnnnyyyy.github.io/portfolio"><i class="fa fa-user"></i>&nbsp;Portfolio</a></li>
+                <li><a target="_blank" href="https://www.linkedin.com/in/arjun-dass-3a3434106/"><i class="fa fa-linkedin"></i>&nbsp;LinkedIn</a></li>
+                <li><a target="_blank" href="https://github.com/kiiiiNNNNNNNNNyyyy"><i class="fa fa-github"></i>&nbsp;Github</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+	<div class="container top-heading">
+		<div class="row text-center">
+			<h2>The Movie Quiz</h2>
 		</div>
-	
+		<div class="row" style="margin-bottom:3%;">
+			<div class="col-md-12">
+				<form method="post" action="/">
+					<div id="custom-search-input">
+						<div class="input-group col-md-12">
+						<input type="text" class="form-control input-lg" placeholder="Try a Celebrity of your own choice...." id="search" name="search"/>
+							<span class="input-group-btn">
+								<button class="btn btn-info btn-lg" type="submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
 		<div class="row">
 			<div class="content">
 				<div class="panel panel-success">
@@ -60,11 +106,13 @@
 							<div class="col-md-6">
 								<div class="internal">
 									<% console.log(obj.name); %>
-									<h4><strong>Q. In what year did <%= obj.name %> appear in <%= obj.content.results[rand].title %>?</strong></h4>
+									<div class="text-center">
+										<h4><strong>Q. In what year did <%= obj.name %> appear in <%= obj.content.results[rand].title %>?</strong></h4>
+									</div>
 									<ol class="list-group">
-										<li class="list-group-item text-center list-group-item-warning"><button class="btn btn-lg btn-md btn-info" onClick="ansCheck(<%=answer + x[0]%>, <%=answer%>)" class="ans"><%= answer + x[0] %></button></li>
-										<li class="list-group-item text-center list-group-item-warning"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=answer + x[1]%>, <%=answer%>)" class="ans"><%= answer + x[1] %></button></li>
-										<li class="list-group-item text-center list-group-item-warning"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=answer + x[2]%>, <%=answer%>)" class="ans"><%= answer + x[2] %></button></li>
+										<li class="list-group-item text-center list-group-item-primary"><button class="btn btn-lg btn-md btn-info" onClick="ansCheck(<%=answer + x[0]%>, <%=answer%>)" class="ans"><%= answer + x[0] %></button></li>
+										<li class="list-group-item text-center list-group-item-primary"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=answer + x[1]%>, <%=answer%>)" class="ans"><%= answer + x[1] %></button></li>
+										<li class="list-group-item text-center list-group-item-primary"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=answer + x[2]%>, <%=answer%>)" class="ans"><%= answer + x[2] %></button></li>
 									</ol>
 									<div class="alert alert-success success_hide">
 										<strong class="outcome"></strong>
@@ -76,23 +124,25 @@
 									<button class="btn btn-lg btn-primary btn-md" onClick="reload()" class="plyAgain">Play Again?</button>
 								</div>
 							</div>
-						<% } else if(z==2){%>
-							<% var answer_moveie_name = JSON.stringify(obj.content.results[rand].original_title); %>
-							<% var wrong_movie_name1 = JSON.stringify(obj.content.results[random1].original_title);%>
-							<% var wrong_movie_name2 = JSON.stringify(obj.content.results[random2].original_title);%>
-							<% var x = [answer_moveie_name, wrong_movie_name2, wrong_movie_name1]; shff(x); %>
-							<div class="col-md-6">
-								<div class="internal">
+							<% } else if(z==2){%>
+								<% var answer_moveie_name = JSON.stringify(obj.content.results[rand].original_title); %>
+								<% var wrong_movie_name1 = JSON.stringify(obj.content.results[random1].original_title);%>
+								<% var wrong_movie_name2 = JSON.stringify(obj.content.results[random2].original_title);%>
+								<% var x = [answer_moveie_name, wrong_movie_name2, wrong_movie_name1]; shff(x); %>
+								<div class="col-md-6">
+									<div class="internal">
 									<img class="img-responsive img-rounded" alt="Cinque Terre" src="https://image.tmdb.org/t/p/w500<%=obj.content.results[rand].backdrop_path %>">	
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="internal">
-									<h4><strong>Q. What is the title of this movie?</strong></h4>
+									<div class="text-center">
+										<h4><strong>Q. What is the title of this movie?</strong></h4>
+									</div>
 									<ol class="list-group">
-										<li class="list-group-item text-center list-group-item-warning"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=x[0] %>, <%=answer_moveie_name %>)"><%= x[0] %></button></li>
-										<li class="list-group-item text-center list-group-item-warning"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=x[1]%>, <%=answer_moveie_name %>)"><%= x[1] %></button></li>
-										<li class="list-group-item text-center list-group-item-warning"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=x[2]%>, <%=answer_moveie_name%>)"><%= x[2] %></button></li>
+										<li class="list-group-item text-center list-group-item-primary"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=x[0] %>, <%=answer_moveie_name %>)"><%= x[0] %></button></li>
+										<li class="list-group-item text-center list-group-item-primary"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=x[1]%>, <%=answer_moveie_name %>)"><%= x[1] %></button></li>
+										<li class="list-group-item text-center list-group-item-primary"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=x[2]%>, <%=answer_moveie_name%>)"><%= x[2] %></button></li>
 									</ol>
 									<div class="alert alert-success success_hide">
 										<strong class="outcome"></strong>
@@ -104,43 +154,47 @@
 									<button class="btn btn-lg btn-primary" onClick="reload()" class="plyAgain">Play Again?</button>
 								</div>
 							</div>
-						<% }else{ %>
-							<% var desc = JSON.stringify(obj.content.results[rand].overview);%>
-							<% console.log(desc); %>
-							<% var desc_movie = JSON.stringify(obj.content.results[rand].original_title); %>
-							<% var wrong_movie_name1 = JSON.stringify(obj.content.results[random1].original_title);%>
-							<% var wrong_movie_name2 = JSON.stringify(obj.content.results[random2].original_title);%>
-							<% var x = [desc_movie, wrong_movie_name1, wrong_movie_name2]; shff(x); %>
-							<div class="col-md-6">
-								<div style="padding-top:15%;text-align:justify;">
-									<strong><%= desc %></strong>	
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="internal">
-									<h4><strong>Q. Which movie is best described by this title?</strong></h4>
-									<ol class="list-group">
-										<li class="list-group-item text-center list-group-item-warning"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=x[0] %>, <%=desc_movie %>)"><%= x[0] %></button></li>
-										<li class="list-group-item text-center list-group-item-warning"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=x[1]%>, <%=desc_movie %>)"><%= x[1] %></button></li>
-										<li class="list-group-item text-center list-group-item-warning"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=x[2]%>, <%=desc_movie %>)"><%= x[2] %></button></li>
-									</ol>
-									<div class="alert alert-success success_hide">
-										<strong class="outcome"></strong>
+							<% }else{ %>
+								<% var desc = JSON.stringify(obj.content.results[rand].overview);%>
+								<% console.log(desc); %>
+								<% var desc_movie = JSON.stringify(obj.content.results[rand].original_title); %>
+								<% var wrong_movie_name1 = JSON.stringify(obj.content.results[random1].original_title);%>
+								<% var wrong_movie_name2 = JSON.stringify(obj.content.results[random2].original_title);%>
+								<% var x = [desc_movie, wrong_movie_name1, wrong_movie_name2]; shff(x); %>
+								<div class="col-md-6">
+									<div class="text-center" style="padding-top:15%;text-align:justify;">
+										<strong><%= desc %></strong>	
 									</div>
-									<div class="alert alert-danger failure_hide">
-										<strong class="outcome"></strong>
-										<strong class="corAns"></strong>
-									</div>
-									<button class="btn btn-lg btn-primary" onClick="reload()" class="plyAgain">Play Again?</button>
 								</div>
+								<div class="col-md-6">
+									<div class="internal">
+										<div class="text-center">
+											<h4><strong>Q. Which movie is best described by this title?</strong></h4>
+										</div>
+										<ol class="list-group">
+											<li class="list-group-item text-center list-group-item-primary"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=x[0] %>, <%=desc_movie %>)"><%= x[0] %></button></li>
+											<li class="list-group-item text-center list-group-item-primary"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=x[1]%>, <%=desc_movie %>)"><%= x[1] %></button></li>
+											<li class="list-group-item text-center list-group-item-primary"><button class="btn btn-lg btn-info" onClick="ansCheck(<%=x[2]%>, <%=desc_movie %>)"><%= x[2] %></button></li>
+										</ol>
+										<div class="alert alert-success success_hide">
+											<strong class="outcome"></strong>
+										</div>
+										<div class="alert alert-danger failure_hide">
+											<strong class="outcome"></strong>
+											<strong class="corAns"></strong>
+										</div>
+										<button class="btn btn-lg btn-primary" onClick="reload()" class="plyAgain">Play Again?</button>
+									</div>
+								</div>
+								<% } %>
 							</div>
-						<% } %>
+						</div>
 					</div>
 				</div>
+				<div class="alert alert-danger">
+					<strong>Please Note!</strong> Enter a valid actor name else default Brad Pitt Quiz will be rendered.
+				</div>
 			</div>
-		</div>
-		<div class="alert alert-danger">
-  			<strong>Please Note!</strong> Enter a valid actor name else default Brad Pitt Quiz will be rendered.
 		</div>
 	</div>
 </div>
