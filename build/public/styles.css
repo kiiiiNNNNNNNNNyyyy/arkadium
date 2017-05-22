@@ -42,7 +42,7 @@ body{
     background-color: rgb(88, 216, 236);
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 720px) {
    .top-heading{
     margin-top: 15%;    
    }
