@@ -12,45 +12,45 @@
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Arkadium Project</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Quiz Game</a></li>
-            <li><a target="_blank" href="http://www.arkadium.com/us/">Arkadium Home</a></li>
-            <li><a target="_blank" href="http://www.arkadium.com/us/games/">Arkadium Games</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About Arkadium <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a target="_blank" href="http://www.arkadium.com/us/about/">About Arkadium</a></li>
-                <li><a target="_blank" href="http://www.arkadium.com/us/about/team/">About Team</a></li>
-                <li><a target="_blank" href="http://www.arkadium.com/us/our-products/">About Products</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Follow Arkadium</li>
-                <li><a target="_blank" href="https://www.facebook.com/arkadium"><i class="fa fa-facebook"></i>&nbsp;Facebook</a></li>
-                <li><a target="_blank" href="https://twitter.com/arkadium"><i class="fa fa-twitter"></i>&nbsp;Twitter</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About Me<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a target="_blank" href="https://kiiiinnnnnnnnnyyyy.github.io/portfolio"><i class="fa fa-user"></i>&nbsp;Portfolio</a></li>
-                <li><a target="_blank" href="https://www.linkedin.com/in/arjun-dass-3a3434106/"><i class="fa fa-linkedin"></i>&nbsp;LinkedIn</a></li>
-                <li><a target="_blank" href="https://github.com/kiiiiNNNNNNNNNyyyy"><i class="fa fa-github"></i>&nbsp;Github</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Arkadium Project</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Quiz Game</a></li>
+					<li><a target="_blank" href="http://www.arkadium.com/us/">Arkadium Home</a></li>
+					<li><a target="_blank" href="http://www.arkadium.com/us/games/">Arkadium Games</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About Arkadium <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a target="_blank" href="http://www.arkadium.com/us/about/">About Arkadium</a></li>
+							<li><a target="_blank" href="http://www.arkadium.com/us/about/team/">About Team</a></li>
+							<li><a target="_blank" href="http://www.arkadium.com/us/our-products/">About Products</a></li>
+							<li role="separator" class="divider"></li>
+							<li class="dropdown-header">Follow Arkadium</li>
+							<li><a target="_blank" href="https://www.facebook.com/arkadium"><i class="fa fa-facebook"></i>&nbsp;Facebook</a></li>
+							<li><a target="_blank" href="https://twitter.com/arkadium"><i class="fa fa-twitter"></i>&nbsp;Twitter</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About Me<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a target="_blank" href="https://kiiiinnnnnnnnnyyyy.github.io/portfolio"><i class="fa fa-user"></i>&nbsp;Portfolio</a></li>
+							<li><a target="_blank" href="https://www.linkedin.com/in/arjun-dass-3a3434106/"><i class="fa fa-linkedin"></i>&nbsp;LinkedIn</a></li>
+							<li><a target="_blank" href="https://github.com/kiiiiNNNNNNNNNyyyy"><i class="fa fa-github"></i>&nbsp;Github</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div>
+	</nav>
 	<div class="container top-heading">
 		<div class="row text-center">
 			<h2>The Movie Quiz</h2>
@@ -60,7 +60,7 @@
 				<form method="post" action="/">
 					<div id="custom-search-input">
 						<div class="input-group col-md-12">
-						<input type="text" class="form-control input-lg" placeholder="Try a Celebrity of your own choice...." id="search" name="search"/>
+							<input type="text" class="form-control input-lg" placeholder="Try a Celebrity of your own choice...." id="search" name="search"/>
 							<span class="input-group-btn">
 								<button class="btn btn-info btn-lg" type="submit">
 									<i class="glyphicon glyphicon-search"></i>
@@ -81,8 +81,6 @@
 						<% var random1 = 0; var random2 = 0; %>
 						<% do{random1 = Math.floor(Math.random() * (19 - 0 + 1)) + 0;}while(random1 === rand);%>
 						<% do{random2 = Math.floor(Math.random() * (19 - 0 + 1)) + 0;}while((random2 === rand) && (random2 === random1)) ; %>
-						<% var randTwo = Math.floor	(Math.random() * (2 - 0 + 1)) + 0; %>
-						<% var answer = parseInt(obj.content.results[rand].release_date.split("-")[0]) %>
 						<% function shff(arr) {
 							let i = arr.length;
 							while (i > 0) {
@@ -96,6 +94,7 @@
 						} %>
 						<% var z = Math.floor(Math.random() * 3) + 1;%>	
 						<% if(z == 1){ %>
+							<% var answer = parseInt(obj.content.results[rand].release_date.split("-")[0]) %>
 							<% var x = [0, 1, 2]%>
 							<% shff(x) %>
 							<div class="col-md-6">
